@@ -7,6 +7,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"os"
 	"time"
 
@@ -80,6 +81,7 @@ func (s *serviceDiscovery) runAndWriteFile(ctx context.Context) error {
 			// Encoding and file write error should never happen,
 			// so we stop extension by returning error.
 			b, err := targetsToFileSDYAML(targets, s.cfg.JobLabelName)
+			log.Printf("Unicorn - ResultFile YAML: {%v}", string(b))
 			if err != nil {
 				return err
 			}
